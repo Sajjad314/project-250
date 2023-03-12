@@ -39,7 +39,7 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ConversationViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecentConversationsAdapter.ConversationViewHolder holder, int position) {
         holder.setData(chatMessages.get(position));
     }
 
@@ -65,12 +65,13 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
                         user.name = chatMessage.conversationName;
                         user.image = chatMessage.conversationImage;
                         conversationListener.onConversationClicked(user);
+
             }
             );
         }
     }
     private Bitmap getConversationImage(String encodedImage) {
-        byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
+        byte[] bytes = Base64.decode(encodedImage,Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes,0, bytes.length);
     }
 }

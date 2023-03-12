@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements ConversationListe
                     chatMessage.receiverId = receiverId;
                     if (preferenceManager.getString(Constants.KEY_USER_ID).equals(senderId)) {
                         chatMessage.conversationImage = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
+                        Toast.makeText(this, chatMessage.conversationImage, Toast.LENGTH_LONG).show();
                         chatMessage.conversationName = documentChange.getDocument().getString(Constants.KEY_RECEIVER_NAME);
                         chatMessage.conversationId = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
                     }else {
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements ConversationListe
                         String senderId = documentChange.getDocument().getString(Constants.KEY_SENDER_ID);
                         String receiverId = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
                         if (conversations.get(i).senderId.equals(senderId) && conversations.get(i).receiverId.equals(receiverId)) {
-                            conversations.get(i).message = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
+                            conversations.get(i).message = documentChange.getDocument().getString(Constants.KEY_LAST_MESSAGE);
                             conversations.get(i).dateObject = documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP);
                             break;
                         }
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements ConversationListe
             conversationsAdapter.notifyDataSetChanged();
             binding.conversationsRecyclerView.smoothScrollToPosition(0);
             binding.conversationsRecyclerView.setVisibility(View.VISIBLE);
-            binding.progressBar.setVisibility(View.VISIBLE);
+            binding.progressBar.setVisibility(View.GONE);
 
         }
     };

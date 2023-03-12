@@ -174,7 +174,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    private void checkForConversationRemotely(String senderId, String receiverId) {
+    private   void checkForConversationRemotely(String senderId, String receiverId) {
         database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
                 .whereEqualTo(Constants.KEY_SENDER_ID, senderId)
                 .whereEqualTo(Constants.KEY_RECEIVER_ID, receiverId)
