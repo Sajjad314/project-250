@@ -1,6 +1,5 @@
 package com.example.mychatapp.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.util.Base64;
@@ -32,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements ConversationListener {
+public class MainActivity extends BaseActivity implements ConversationListener {
     private ActivityMainBinding binding;
     private PreferenceManager preferenceManager;
     private List<ChatMessage> conversations;
